@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text,StyleSheet, FlatList, TouchableOpacity, Button, Image } from 'react-native';
 import axios from 'axios'
+import SearchBar from 'react-native-search-bar';
 
 export default function HomeScreen(props) {
   const [loading, setLoading] = useState(true);
@@ -31,6 +32,16 @@ export default function HomeScreen(props) {
         setLoading(false);
       });
   }, []);
+
+
+
+      <SearchBar
+      ref="searchBar"
+      placeholder="Search"
+      onChangeText={this.refs.searchBar.unFocus}
+      onSearchButtonPress={this.refs.searchBar.unFocus}
+      onCancelButtonPress={this.refs.searchBar.unFocus}
+    />
   if (loading) {
     return <Text>Loading...</Text>;
   }
@@ -47,9 +58,36 @@ export default function HomeScreen(props) {
               props.navigation.push("MaidDetail")
             }
           >
-            <Text style={styles.itemText}>{item.name}</Text>
-            <Image source={{uri: item.photo}}
-                   style={styles.maidImage} />
+
+            
+            <View style={{flex:1, flexDirection: 'row'}}>
+                
+                <Image source = {{ uri: item.photo }} style={styles.imageView} />
+              
+                {/* <Text  style={{width:'50%', textAlignVertical:'right',padding:10,color: 'red',flex:1}} >{item.name}</Text>
+
+                <Text  style={{textAlignVertical:'center',padding:20,flex:1}} >{item.detail}</Text> */}
+              <View >
+                  {/* <Text  style={{width:'50%', textAlignVertical:'right',padding:10,color: 'red',flex:1}} >{item.name}</Text> */}
+                  <Text  style={{textAlignVertical:'center',padding:10,flex:1,fontWeight: 'bold',fontSize:18}} >{item.name}</Text>
+
+                  <Text  style={{textAlignVertical:'center',padding:10,flex:1,color:"#D8A31D",fontSize:15}} >{item.detail}</Text>
+
+              </View>
+              
+                      
+            </View>
+            
+
+
+            {/* <Image source={{uri: item.photo}}
+                   style={{width:60, height:60,borderRadius:30,flexDirection:'row',horizontal:'5',borderRadius:'5'}} />
+            <View style={{alignItems:"center",flex:'1'}}>
+              <Text style={{fontWeight:"bold"}}>{item.name}</Text>
+              <Text>{item.detail}</Text>
+            </View> */}
+            
+            
           </TouchableOpacity>
         )}
       />
@@ -69,6 +107,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   list: {
+    
     paddingTop: 10,
     paddingLeft: 20,
     paddingRight: 20,
@@ -81,8 +120,30 @@ const styles = StyleSheet.create({
     marginVertical: 10
   },
   maidImage: {
-    height: 300
+    height: '85%',
+    width:'30%'
 },
+  textdata:{
+
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  imageView: {
+
+    width: '50%',
+    height: '100%',
+    
+    borderRadius : 7
+ 
+},
+textView: {
+
+  width:'50%', 
+  textAlignVertical:'center',
+  padding:10,
+  color: '#000'
+
+}
 });
     // return (
     //   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

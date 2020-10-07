@@ -24,8 +24,8 @@ const Navigation = () => (
         } >
 
       
-        <Stack.Screen name="Login" options={{headerShown :false}} component={LogginScreen} />
-        <Stack.Screen name="Register"  component={RegisterScreen} />
+        {/* <Stack.Screen name="Login" options={{headerShown :false}} component={LogginScreen} />
+        <Stack.Screen name="Register"  component={RegisterScreen} /> */}
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="MaidDetail" component={MaidDetail} />
       
