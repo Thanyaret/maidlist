@@ -3,47 +3,49 @@ import axios from 'axios'
 import { StyleSheet, View ,Text ,Image} from 'react-native'
 import { Button } from 'react-native-elements';
 
-export default function MaidDetail(props) {
-    const[resume, setResume] = useState({
+export default function MaidDetail(props,route) {
+    const[maid, setMaid] = useState({
         name: '',
-        nickname: '',
         age: '',
+        phone: '',
         skill: '',
     })
-    // useEffect (() => {
-    //     const id = props.route.params.id
-    //     axios.get('http://10.94.5.84:8000/api/maid/' + id)
-    //     .then((res) =>{
-    //         setResume(res.data)
-    //     }).catch((error) =>{
-    //         console.log('error' , error)
-    //     })
-    // }, [])
+    useEffect (() => {
+        console.log(props.route.params);
+        axios.get('http://10.94.5.84:8000/api/maid/' + props.route.params)
+        .then((res) =>{
+            setMaid(res.data)
+        }).catch((error) =>{
+            console.log('error' , error)
+        })
+    }, [])
+
 
 return (
         <View style={styles.container}>
-        <Image
-        style={styles.avatar} 
-        source={{uri:'https://movie-api.igeargeek.com' + resume.avatar}}/>
+        <Image source={{uri: maid.photo}}
+                   style={styles.maidImage} />
         <View style={styles.textLine }>
-        <Text style={{ color: 'white',fontSize:17 }}>ชื่อ:{resume.name}</Text>
+        <Text style={{ color: 'white',fontSize:20 }}>ชื่อ:{maid.name}</Text>
         </View>
         <View style={styles.textLine}>
-        <Text style={{ color: 'white',fontSize:17 }}>อายุ:{resume.nickname}</Text>
+        <Text style={{ color: 'white',fontSize:20 }}>อายุ:{maid.age}</Text>
         </View>
         <View style={styles.textLine}>
-        <Text style={{ color: 'white',fontSize:17 }}>เบอร์ติดต่อ :{resume.nickname}</Text>
+        <Text style={{ color: 'white',fontSize:20 }}>เบอร์ติดต่อ :{maid.phone}</Text>
         </View>
         <View style={styles.textLine}>
-        <Text style={{ color: 'white',fontSize:17 }}>พิกัด :{resume.age}</Text>
+        <Text style={{ color: 'white',fontSize:20 }}>พิกัด :{maid.age}</Text>
         </View>
         <View style={styles.textLine}>
-        <Text style={{ color: 'white',fontSize:17 }}>ความสามารถพิเศษ :{resume.skill}</Text>
+        <Text style={{ color: 'white',fontSize:20 }}>ความสามารถพิเศษ :{maid.skill}</Text>
         </View>
         <View style={styles.btn}>
               <Button titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',justifyContent:'center',}} title='Select'></Button>
         </View>
+          
     </View>
+    
 )
 }
     const styles = StyleSheet.create({
@@ -56,5 +58,7 @@ return (
         btn:{ alignItems:'center',
             justifyContent:'center',
     },
-        // avatar:{width:'100%', height:360,marginBottom:20,}
+    maidImage: {
+        height: 300
+    },
     });

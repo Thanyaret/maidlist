@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text,StyleSheet, FlatList, TouchableOpacity, Button, Image } from 'react-native';
 import axios from 'axios'
+import Template from './Template'
+import {Icon} from "react-native-elements";
 
 export default function HomeScreen(props) {
   const [loading, setLoading] = useState(true);
@@ -44,7 +46,7 @@ export default function HomeScreen(props) {
           <TouchableOpacity
             style={styles.item}
             onPress={() =>
-              props.navigation.push("MaidDetail")
+              props.navigation.push("MaidDetail",item.id)
             }
           >
             <Text style={styles.itemText}>{item.name}</Text>
@@ -54,6 +56,7 @@ export default function HomeScreen(props) {
         )}
       />
     </View>
+    
   );
 };
 const styles = StyleSheet.create({
