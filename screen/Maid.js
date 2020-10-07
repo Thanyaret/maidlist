@@ -20,9 +20,9 @@ export default function HomeScreen(props) {
   useEffect(() => {
     setHeader();
     axios
-      .get("https://movie-api.igeargeek.com/users/")
+      .get("http://10.94.5.84:8000/api/maid/")
       .then((res) => {
-        setList(res.data.data);
+        setList(res.data);
       })
       .catch((error) => {
         console.log("error", error);
@@ -39,7 +39,7 @@ export default function HomeScreen(props) {
       <FlatList
         style={styles.list}
         data={list}
-        keyExtractor={(item) => item.ID}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.item}
@@ -47,9 +47,9 @@ export default function HomeScreen(props) {
               props.navigation.push("MaidDetail")
             }
           >
-            <Text
-              style={styles.itemText}
-            >{`${item.name} : ${item.nickname} (${item.age} years)`}</Text>
+            <Text style={styles.itemText}>{item.name}</Text>
+            <Image source={{uri: item.photo}}
+                   style={styles.maidImage} />
           </TouchableOpacity>
         )}
       />
@@ -80,6 +80,9 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 10
   },
+  maidImage: {
+    height: 300
+},
 });
     // return (
     //   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

@@ -12,7 +12,7 @@ export default function MaidDetail(props) {
     })
     // useEffect (() => {
     //     const id = props.route.params.id
-    //     axios.get('https://movie-api.igeargeek.com/users/profile/' + id)
+    //     axios.get('http://10.94.5.84:8000/api/maid/' + id)
     //     .then((res) =>{
     //         setResume(res.data)
     //     }).catch((error) =>{

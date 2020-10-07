@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import MaidList from './screen/MaidList'
 import MaidDetail from './screen/MaidDetail'
-import HomeScreen from './screen/Miad'
+import HomeScreen from './screen/Maid'
 import LogginScreen from './screen/Login'
 import RegisterScreen from './screen/Register'
 
