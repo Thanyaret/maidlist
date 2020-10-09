@@ -2,6 +2,7 @@ import React ,{ useState, useEffect} from 'react'
 import axios from 'axios'
 import { StyleSheet, View ,Text ,Image} from 'react-native'
 import { Button } from 'react-native-elements';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function MaidDetail(props,route) {
     const[maid, setMaid] = useState({
@@ -22,7 +23,8 @@ export default function MaidDetail(props,route) {
 
 
 return (
-        <View style={styles.container}>
+        
+        <ScrollView style={styles.container}>
         <Image source={{uri: maid.photo}}
                    style={styles.maidImage} />
         <View style={styles.textLine }>
@@ -44,7 +46,7 @@ return (
               <Button titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',justifyContent:'center',}} title='Select'></Button>
         </View>
           
-    </View>
+        </ScrollView>
     
 )
 }
