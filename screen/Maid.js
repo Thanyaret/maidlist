@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text,StyleSheet, FlatList, TouchableOpacity, Button, Image } from 'react-native';
 import axios from 'axios'
-import SearchBar from 'react-native-search-bar';
+import AppTemplateScreen from './Template'
+
 
 export default function HomeScreen(props) {
   const [loading, setLoading] = useState(true);
@@ -9,8 +10,9 @@ export default function HomeScreen(props) {
   const setHeader = () => {
     props.navigation.setOptions({
       headerRight: () => (
+        
         <Button
-          title="Create"
+          title="Menu"
           onPress={() => {
             props.navigation.push("ResumeForm");
           }}
@@ -21,7 +23,7 @@ export default function HomeScreen(props) {
   useEffect(() => {
     setHeader();
     axios
-      .get("http://10.94.5.84:8000/api/maid/")
+      .get("http://10.94.0.151:8000/api/maid/")
       .then((res) => {
         setList(res.data);
       })
@@ -34,19 +36,12 @@ export default function HomeScreen(props) {
   }, []);
 
 
-
-      <SearchBar
-      ref="searchBar"
-      placeholder="Search"
-      onChangeText={this.refs.searchBar.unFocus}
-      onSearchButtonPress={this.refs.searchBar.unFocus}
-      onCancelButtonPress={this.refs.searchBar.unFocus}
-    />
-  if (loading) {
-    return <Text>Loading...</Text>;
-  }
+  // if (loading) {
+  //   return <Text>Loading...</Text>;
+  // }
   return (
     <View style={styles.container}>
+      
       <FlatList
         style={styles.list}
         data={list}
@@ -91,6 +86,7 @@ export default function HomeScreen(props) {
           </TouchableOpacity>
         )}
       />
+      <AppTemplateScreen/>
     </View>
     
   );

@@ -4,7 +4,9 @@ import { View, Text } from 'react-native'
 export default function UserProfile() {
     return (
         <View>
-            <Text></Text>
+            <Text>Name :</Text>
+            <Text>Phone :</Text>
+            <Text>Address :</Text>
         </View>
     )
 }

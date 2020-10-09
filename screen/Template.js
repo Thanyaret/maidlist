@@ -4,6 +4,9 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import {Icon, Button} from "react-native-elements";
 import {View, StyleSheet} from "react-native";
 import HomeScreen from "./Maid";
+import History from "./History"
+import UserProfile from "./UserProfile"
+import status from "./status"
 // import  from "./home/Template";
 // import  from "./home/Create";
 
@@ -23,16 +26,37 @@ export default function AppTemplateScreen({navigation}) {
             shifting="false"
         >
             <Tab.Screen
-                name="HomeScreen"
-                component={HomeScreen}
+                name="UserProfile"
+                component={UserProfile}
                 options={{
-                    title: "Home",
+                    title: "ข้อมูลส่วนตัว",
                     tabBarIcon: ({color}) => (
-                        <MaterialCommunityIcons name="home" color={color} size={26}/>
+                        <MaterialCommunityIcons name="account" color={color} size={26}/>
                     ),
                 }}
             />
-            {/* <Tab.Screen
+           <Tab.Screen
+                name="History"
+                component={History}
+                options={{
+                    title: "ประวัติการจอง",
+                    tabBarIcon: ({color}) => (
+                        <MaterialCommunityIcons name="history" color={color} size={26}/>
+                    ),
+                }}
+            />
+             <Tab.Screen
+                name="status"
+                component={status}
+                options={{
+                    title: "สถานะการจอง",
+                    tabBarIcon: ({color}) => (
+                        <MaterialCommunityIcons name="ballot-recount-outline" color={color} size={26}/>
+                    ),
+                }}
+            />
+
+{/* <Tab.Screen
                 name="Create"
                 component={CreateTopicScreen}
                 options={{
@@ -65,16 +89,6 @@ export default function AppTemplateScreen({navigation}) {
                             />
                         </View>
 
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="MyTopicTemplate"
-                component={MyTopicTemplateScreen}
-                options={{
-                    title: "MyTopic",
-                    tabBarIcon: ({color}) => (
-                        <MaterialCommunityIcons name="account" color={color} size={26}/>
                     ),
                 }}
             /> */}

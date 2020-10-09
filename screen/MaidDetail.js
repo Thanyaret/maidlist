@@ -12,7 +12,7 @@ export default function MaidDetail(props,route) {
     })
     useEffect (() => {
         console.log(props.route.params);
-        axios.get('http://10.94.5.84:8000/api/maid/' + props.route.params)
+        axios.get('http://10.94.0.151:8000/api/maid/' + props.route.params)
         .then((res) =>{
             setMaid(res.data)
         }).catch((error) =>{
