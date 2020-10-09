@@ -11,6 +11,7 @@ export default function MaidDetail(props,route) {
         phone: '',
         skill: '',
     })
+
     useEffect (() => {
         console.log(props.route.params);
         axios.get('http://10.94.0.151:8000/api/maid/' + props.route.params)
@@ -20,6 +21,7 @@ export default function MaidDetail(props,route) {
             console.log('error' , error)
         })
     }, [])
+    
 
 
 return (
@@ -43,7 +45,7 @@ return (
         <Text style={{ color: 'white',fontSize:20 }}>ความสามารถพิเศษ :{maid.skill}</Text>
         </View>
         <View style={styles.btn}>
-              <Button titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',justifyContent:'center',}} title='Select'></Button>
+              <Button titleStyle={{fontSize: 22,}}  buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',justifyContent:'center',}} title='Select'></Button>
         </View>
           
         </ScrollView>
