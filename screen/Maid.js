@@ -16,14 +16,14 @@ import { SearchBar } from 'react-native-elements';
 export default function HomeScreen(props) {
   const [loading, setLoading] = useState(true);
   const [list, setList] = useState([]);
-  const go_to_home = ()=>{
+  const go_to_login = ()=>{
     navigation.navigate('Login')
 };
   const setHeader = () => {
     props.navigation.setOptions({
       headerRight: () => (
 
-        <Button  titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',marginBottom:5 }}  onPress={go_to_home} color='#F5C2C2' title='Login'></Button>        
+        <Button  titleStyle={{fontSize: 10,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#61AC7F',marginBottom:5 }}  onPress={go_to_login} color='#F5C2C2' title='Login'></Button>        
         
        
       ),
