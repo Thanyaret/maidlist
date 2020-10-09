@@ -38,7 +38,7 @@ const Navigation = () => (
         <Stack.Screen name="History" component={History} />
         <Stack.Screen name="UserProfile" component={UserProfile} />
         <Stack.Screen name="status" component={status} />
-        <Stack.Screen name="calendar" component={calendar} />
+        {/* <Stack.Screen name="calendar" component={calendar} /> */}
 
 
         

@@ -43,7 +43,7 @@ return (
         <Text style={{ color: 'white',fontSize:20 }}>ความสามารถพิเศษ :{maid.skill}</Text>
         </View>
         <View style={styles.btn}>
-              <Button titleStyle={{fontSize: 22,}} onDateChange={this.onDateChange} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',justifyContent:'center',}} title='Select'></Button>
+              <Button titleStyle={{fontSize: 22,}}  buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',justifyContent:'center',}} title='Select'></Button>
         </View>
           
     </View>
