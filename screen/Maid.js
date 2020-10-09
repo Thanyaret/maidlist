@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text,StyleSheet, FlatList, TouchableOpacity, Button, Image } from 'react-native';
+import { View, Text,StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
 import axios from 'axios'
+import { Button } from 'react-native-elements';
 
 import AppTemplateScreen from './Template'
 
@@ -15,16 +16,16 @@ import { SearchBar } from 'react-native-elements';
 export default function HomeScreen(props) {
   const [loading, setLoading] = useState(true);
   const [list, setList] = useState([]);
+  const go_to_home = ()=>{
+    navigation.navigate('Login')
+};
   const setHeader = () => {
     props.navigation.setOptions({
       headerRight: () => (
+
+        <Button  titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',marginBottom:5 }}  onPress={go_to_home} color='#F5C2C2' title='Login'></Button>        
         
-        <Button
-          title="Menu"
-          onPress={() => {
-            props.navigation.push("ResumeForm");
-          }}
-        />
+       
       ),
     });
   };
@@ -75,29 +76,26 @@ export default function HomeScreen(props) {
                 
                 <Image source = {{ uri: item.photo }} style={styles.imageView} />
               
-                <Text  style={{width:'50%', textAlignVertical:'right',padding:10,color: 'red',flex:1}} >{item.name}</Text>
-
+                {/* <Text  style={{width:'50%', textAlignVertical:'right',padding:10,color: 'red',flex:1}} >{item.name}</Text>
                 <Text  style={{textAlignVertical:'center',padding:20,flex:1}} >{item.detail}</Text>
-              {/* <View >
-                  <Text  style={{width:'50%', textAlignVertical:'right',padding:10,color: 'red',flex:1}} >{item.name}</Text>
-                  <Text  style={{textAlignVertical:'center',padding:10,flex:1,fontWeight: 'bold',fontSize:18}} >{item.name}</Text>
-
-                  <Text  style={{textAlignVertical:'center',padding:10,flex:1,color:"#D8A31D",fontSize:15}} >{item.detail}</Text>
-
-              </View> */}
+             */}
+             <View style={{alignItems:"lift",flex:'1'}}>
+              <Text style={{fontWeight:"bold",}}>{item.name}</Text>
+              <Text style={{color:"#D8A31D"}}>{item.detail}</Text>
+            </View>
               
                       
             </View>
             
 
-
+{/* 
             <Image source={{uri: item.photo}}
-                   style={{width:60, height:60,borderRadius:30,flexDirection:'row',horizontal:'5',borderRadius:'5'}} />
-            <View style={{alignItems:"center",flex:'1'}}>
+                   style={{width:60, height:60,borderRadius:30,flexDirection:'row',horizontal:'5',borderRadius:'5'}} /> */}
+            {/* <View style={{alignItems:"center",flex:'1'}}>
               <Text style={{fontWeight:"bold"}}>{item.name}</Text>
               <Text>{item.detail}</Text>
             </View>
-            
+             */}
             
           </TouchableOpacity>
         )}
