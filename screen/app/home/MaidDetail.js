@@ -58,7 +58,8 @@ return (
           minHeight: "100%",
           paddingTop: 30,
         },
-        textLine: {marginBottom:20},
+        textLine: {marginBottom:20,padding:10},
+
         btn:{ alignItems:'center',
             justifyContent:'center',
     },

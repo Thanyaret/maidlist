@@ -20,24 +20,24 @@ export default function AppTemplateScreen({navigation}) {
             tabBarOptions={customTabBarStyle}
             shifting="false"
         >
-            <Tab.Screen
-                name="History"
-                component={History}
-                options={{
-                    title: "ประวัติการจอง",
-                    tabBarIcon: ({color}) => (
-                        <MaterialCommunityIcons name="้history" color={color} size={26}/>
-                    ),
-                }}
-            />
+           
              <Tab.Screen
                 name="Home"
                 component={Home}
                 options={{
                     title: "Home",
                     tabBarIcon: ({color}) => (
-                        <MaterialCommunityIcons name="account" color={color} size={26}/>
+                        <MaterialCommunityIcons name="home" color={color} size={26}/>
                     ),
+                }}
+            />
+             <Tab.Screen
+                name="History"
+                component={History}
+                options={{
+                    title: "History",
+                    tabBarIcon: ({color}) => (
+                        <MaterialCommunityIcons name="history" color={color} size={26}/>                    ),
                 }}
             />
              <Tab.Screen
