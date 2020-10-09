@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text,StyleSheet, FlatList, TouchableOpacity, Button, Image } from 'react-native';
 import axios from 'axios'
+
 import AppTemplateScreen from './Template'
+
+import { SearchBar } from 'react-native-elements';
+
+
+
+
+
 
 
 export default function HomeScreen(props) {
@@ -36,9 +44,17 @@ export default function HomeScreen(props) {
   }, []);
 
 
+
   // if (loading) {
   //   return <Text>Loading...</Text>;
   // }
+
+
+   
+  if (loading) {
+    return <Text>Loading...</Text>;
+  }
+
   return (
     <View style={styles.container}>
       
@@ -59,28 +75,28 @@ export default function HomeScreen(props) {
                 
                 <Image source = {{ uri: item.photo }} style={styles.imageView} />
               
-                {/* <Text  style={{width:'50%', textAlignVertical:'right',padding:10,color: 'red',flex:1}} >{item.name}</Text>
+                <Text  style={{width:'50%', textAlignVertical:'right',padding:10,color: 'red',flex:1}} >{item.name}</Text>
 
-                <Text  style={{textAlignVertical:'center',padding:20,flex:1}} >{item.detail}</Text> */}
-              <View >
-                  {/* <Text  style={{width:'50%', textAlignVertical:'right',padding:10,color: 'red',flex:1}} >{item.name}</Text> */}
+                <Text  style={{textAlignVertical:'center',padding:20,flex:1}} >{item.detail}</Text>
+              {/* <View >
+                  <Text  style={{width:'50%', textAlignVertical:'right',padding:10,color: 'red',flex:1}} >{item.name}</Text>
                   <Text  style={{textAlignVertical:'center',padding:10,flex:1,fontWeight: 'bold',fontSize:18}} >{item.name}</Text>
 
                   <Text  style={{textAlignVertical:'center',padding:10,flex:1,color:"#D8A31D",fontSize:15}} >{item.detail}</Text>
 
-              </View>
+              </View> */}
               
                       
             </View>
             
 
 
-            {/* <Image source={{uri: item.photo}}
+            <Image source={{uri: item.photo}}
                    style={{width:60, height:60,borderRadius:30,flexDirection:'row',horizontal:'5',borderRadius:'5'}} />
             <View style={{alignItems:"center",flex:'1'}}>
               <Text style={{fontWeight:"bold"}}>{item.name}</Text>
               <Text>{item.detail}</Text>
-            </View> */}
+            </View>
             
             
           </TouchableOpacity>
@@ -89,7 +105,7 @@ export default function HomeScreen(props) {
       <AppTemplateScreen/>
     </View>
     
-  );
+    );
 };
 const styles = StyleSheet.create({
   container: {
