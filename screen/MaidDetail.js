@@ -3,6 +3,7 @@ import axios from 'axios'
 import { StyleSheet, View ,Text ,Image} from 'react-native'
 import { Button } from 'react-native-elements';
 
+
 export default function MaidDetail(props,route) {
     const[maid, setMaid] = useState({
         name: '',

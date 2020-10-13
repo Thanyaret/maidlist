@@ -5,7 +5,7 @@ import { Button } from 'react-native-elements';
 
 import AppTemplateScreen from './Template'
 
-import { SearchBar } from 'react-native-elements';
+
 
 
 

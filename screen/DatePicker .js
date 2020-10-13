@@ -5,6 +5,7 @@ import {
   View
 } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker';
+ 
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -13,8 +14,8 @@ export default class App extends Component {
     };
     this.onDateChange = this.onDateChange.bind(this);
   }
-  onDateChange(date) {  
-    this.props.onDateChange(date.toString())
+ 
+  onDateChange(date) {
     this.setState({
       selectedStartDate: date,
     });
@@ -27,6 +28,7 @@ export default class App extends Component {
         <CalendarPicker
           onDateChange={this.onDateChange}
         />
+ 
         <View>
           <Text>SELECTED DATE:{ startDate }</Text>
         </View>
@@ -34,6 +36,7 @@ export default class App extends Component {
     );
   }
 }
+ 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
