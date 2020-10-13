@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text,StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
 import axios from 'axios'
-import { Button } from 'react-native-elements';
-
-import AppTemplateScreen from './Template'
 
 
 
@@ -14,6 +11,7 @@ import AppTemplateScreen from './Template'
 
 
 export default function HomeScreen(props) {
+
   const [loading, setLoading] = useState(true);
   const [list, setList] = useState([]);
   const go_to_login = ()=>{
@@ -59,6 +57,7 @@ export default function HomeScreen(props) {
   return (
     <View style={styles.container}>
       
+     
       <FlatList
         style={styles.list}
         data={list}
@@ -67,7 +66,7 @@ export default function HomeScreen(props) {
           <TouchableOpacity
             style={styles.item}
             onPress={() =>
-              props.navigation.push("MaidDetail",item.id)
+              props.navigation.navigate("MaidDetail",item.id)
             }
           >
 
@@ -100,7 +99,7 @@ export default function HomeScreen(props) {
           </TouchableOpacity>
         )}
       />
-      <AppTemplateScreen/>
+     
     </View>
     
     );

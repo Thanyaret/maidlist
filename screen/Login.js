@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from 'react-native-elements';
-
+import axios from 'axios'
 
 import {StyleSheet, View, Text,TextInput,Image,TouchableHighlight } from 'react-native';
 

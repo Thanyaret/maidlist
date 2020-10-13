@@ -2,6 +2,7 @@ import React ,{ useState, useEffect} from 'react'
 import axios from 'axios'
 import { StyleSheet, View ,Text ,Image} from 'react-native'
 import { Button } from 'react-native-elements';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 export default function MaidDetail(props,route) {
@@ -25,29 +26,43 @@ export default function MaidDetail(props,route) {
 
 
 return (
-        <View style={styles.container}>
+        
+        <ScrollView style={styles.container}>
         <Image source={{uri: maid.photo}}
                    style={styles.maidImage} />
+                   <View style={{borderBottomColor:'white', borderBottomWidth:1,marginVertical:5}}>
+            </View>
         <View style={styles.textLine }>
-        <Text style={{ color: 'white',fontSize:20 }}>ชื่อ:{maid.name}</Text>
+        <Text style={{ color: 'white',fontSize:15 }}>ชื่อ:{maid.name}</Text>
         </View>
+        <View style={{borderBottomColor:'white', borderBottomWidth:1,marginVertical:5}}>
+            </View>
         <View style={styles.textLine}>
-        <Text style={{ color: 'white',fontSize:20 }}>อายุ:{maid.age}</Text>
+        <Text style={{ color: 'white',fontSize:15 }}>อายุ:{maid.age}</Text>
         </View>
+        <View style={{borderBottomColor:'white', borderBottomWidth:1,marginVertical:5}}>
+            </View>
         <View style={styles.textLine}>
-        <Text style={{ color: 'white',fontSize:20 }}>เบอร์ติดต่อ :{maid.phone}</Text>
+        <Text style={{ color: 'white',fontSize:15 }}>เบอร์ติดต่อ :{maid.phone}</Text>
         </View>
+        <View style={{borderBottomColor:'white', borderBottomWidth:1,marginVertical:5}}>
+            </View>
         <View style={styles.textLine}>
-        <Text style={{ color: 'white',fontSize:20 }}>พิกัด :{maid.age}</Text>
+        <Text style={{ color: 'white',fontSize:15 }}>พิกัด :{maid.age}</Text>
         </View>
+        <View style={{borderBottomColor:'white', borderBottomWidth:1,marginVertical:5}}>
+            </View>
         <View style={styles.textLine}>
-        <Text style={{ color: 'white',fontSize:20 }}>ความสามารถพิเศษ :{maid.skill}</Text>
+        <Text style={{ color: 'white',fontSize:15 }}>ความสามารถพิเศษ :{maid.skill}</Text>
         </View>
+        <View style={{borderBottomColor:'white', borderBottomWidth:1,marginVertical:5}}>
+            </View>
         <View style={styles.btn}>
+             
               <Button titleStyle={{fontSize: 22,}}  buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',justifyContent:'center',}} title='Select'></Button>
         </View>
           
-    </View>
+        </ScrollView>
     
 )
 }
@@ -57,7 +72,8 @@ return (
           minHeight: "100%",
           paddingTop: 30,
         },
-        textLine: {marginBottom:20},
+        textLine: {marginBottom:20,padding:10},
+
         btn:{ alignItems:'center',
             justifyContent:'center',
     },
