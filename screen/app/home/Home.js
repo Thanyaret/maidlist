@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { View, Text,StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
 import axios from 'axios'
 
-import { SearchBar } from 'react-native-elements';
+
 
 
 
