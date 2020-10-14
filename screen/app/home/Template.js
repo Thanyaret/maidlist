@@ -15,12 +15,14 @@ export default function Navigation() {
                     headerTintColor: 'white'
                 }
             } >
-            <Stack.Screen
-                name="Home"
-                component={HomeScreen} />
+                
+            
             <Stack.Screen 
                 name="MaidDetail"
                 component={MaidDetail} />
+            <Stack.Screen
+                name="Home"
+                component={HomeScreen} />
         </Stack.Navigator>
     )
 }

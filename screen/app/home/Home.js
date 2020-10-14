@@ -30,7 +30,7 @@ export default function HomeScreen(props) {
   useEffect(() => {
     setHeader();
     axios
-      .get("http://192.168.200.33:8000/api/maid/")
+      .get("http://192.168.33.188:8000/api/maid/")
       .then((res) => {
         setList(res.data);
       })
