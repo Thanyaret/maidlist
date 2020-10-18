@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import MaidDetail from './MaidDetail'
 import HomeScreen from './Home'
 import { Button } from 'react-native-elements';
-
+import AsyncStorage from '@react-native-community/async-storage';
 
 const Stack = createStackNavigator();
 
@@ -20,9 +20,11 @@ export default function HomeTemplate(props) {
         }
     }
         const logout = async () => {
-        await removeItemValue('@storage_TokenKey')
-        await removeItemValue('@storage_UserData')
-        props.navigation.navigate('Login')
+        let result  = await removeItemValue('@storage_TokenKey')
+        let result2 = await removeItemValue('@storage_UserData')
+        if(result && result2){
+            await props.navigation.navigate('Login')
+        }
     }
     
     return (
