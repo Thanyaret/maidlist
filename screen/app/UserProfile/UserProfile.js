@@ -1,6 +1,7 @@
 import React ,{ useState, useEffect} from 'react'
 import { View, Text,StyleSheet,Image,ScrollView  } from 'react-native'
 import axios from 'axios'
+import {backendUrl} from "../../../config"
 export default function UserProfile(props) {
     const[User, setUser] = useState({
         name: '',
@@ -10,7 +11,7 @@ export default function UserProfile(props) {
 
     useEffect (() => {
         axios
-      .get("http://192.168.200.33:8000/api/user")
+      .get( backendUrl +"/api/user")
       .then((res) =>{
           console.log(res.data)
           setUser(res.data[0])
@@ -22,17 +23,11 @@ export default function UserProfile(props) {
         <ScrollView  style={styles.container}>
             <Image source={{uri: User.photo}}
                    style={styles.userImage} />
-            <View style={{borderBottomColor:'white', borderBottomWidth:1,marginVertical:5}}>
-            </View>
              <View style={styles.textLine}>
             <Text style={{ color: 'white',fontSize:15 }}>Name :{User.name}</Text>
             </View>
-            <View style={{borderBottomColor:'white', borderBottomWidth:1,marginVertical:5}}>
-            </View>
             <View style={styles.textLine}>
             <Text style={{ color: 'white',fontSize:15 }}>Phone : {User.phone}</Text>
-            </View>
-            <View style={{borderBottomColor:'white', borderBottomWidth:1,marginVertical:5}}>
             </View>
             <View style={styles.textLine}>
             <Text style={{ color: 'white',fontSize:15 }}>Address :{User.address}</Text>

@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text,StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
 import axios from 'axios'
-
-
-
-
-
-
+import {backendUrl} from "../../../config"
 
 
 
@@ -19,18 +14,18 @@ export default function HomeScreen(props) {
 };
   const setHeader = () => {
     props.navigation.setOptions({
-      headerRight: () => (
+      
 
-        <Button  titleStyle={{fontSize: 10,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#61AC7F',marginBottom:5 }}  onPress={go_to_login} color='#F5C2C2' title='Login'></Button>        
+                
         
        
-      ),
+      
     });
   };
   useEffect(() => {
     setHeader();
     axios
-      .get("http://192.168.33.188:8000/api/maid/")
+      .get(  backendUrl+"/api/maid/")
       .then((res) => {
         setList(res.data);
       })
@@ -41,14 +36,6 @@ export default function HomeScreen(props) {
         setLoading(false);
       });
   }, []);
-
-
-
-  // if (loading) {
-  //   return <Text>Loading...</Text>;
-  // }
-
-
    
   if (loading) {
     return <Text>Loading...</Text>;
@@ -61,7 +48,7 @@ export default function HomeScreen(props) {
       <FlatList
         style={styles.list}
         data={list}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id+""}
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.item}
@@ -80,6 +67,7 @@ export default function HomeScreen(props) {
              */}
              <View style={{alignItems:"lift",flex:'1'}}>
               <Text style={{fontWeight:"bold",}}>{item.name}</Text>
+              <Text style={{color:"#95A5A6"}}>{item.phone}</Text>
               <Text style={{color:"#D8A31D"}}>{item.detail}</Text>
             </View>
               
