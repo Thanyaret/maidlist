@@ -15,6 +15,27 @@ export default function MaidDetail(props,route) {
         skill: '',
     })
 
+    
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+    
+      
+    const showDatePicker = () => {
+      setDatePickerVisibility(true); 
+      
+    };
+  
+    const hideDatePicker = () => {
+      setDatePickerVisibility(false);
+    };
+  
+    const handleConfirm = (date) => {
+      console.warn("A date has been picked: ", date);
+      hideDatePicker();
+    };
+
+
+
+
     useEffect (() => {
         console.log(props.route.params);
         axios.get( backendUrl +'/api/maid/' + props.route.params)
@@ -23,8 +44,9 @@ export default function MaidDetail(props,route) {
         }).catch((error) =>{
             console.log('error' , error)
         })
+
+
     }, [])
-    
 
 
 return (
@@ -57,10 +79,18 @@ return (
               <Button titleStyle={{fontSize: 22,}}
                 buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',justifyContent:'center',}} title='Select'></Button>
         </View>
+        
+          
+        
+        
           
         </ScrollView>
     
 )
+
+
+
+
 }
     const styles = StyleSheet.create({
         container: {
