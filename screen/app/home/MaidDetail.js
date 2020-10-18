@@ -13,7 +13,8 @@ export default function MaidDetail(props,route) {
         phone: '',
         skill: '',
     })
-
+    const [date_me,setDateMe] = useState("")
+   
     
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
     
@@ -27,17 +28,17 @@ export default function MaidDetail(props,route) {
       setDatePickerVisibility(false);
     };
   
-    const handleConfirm = (date) => {
-      console.warn("A date has been picked: ", date);
+    const handleConfirm = (Startdate) => {
+      console.warn("เลือกวันที่: ", Startdate);
+      setDateMe(Startdate)
       hideDatePicker();
     };
-
-
+    
 
 
     useEffect (() => {
         console.log(props.route.params);
-        axios.get('http://192.168.33.188:8000/api/maid/' + props.route.params)
+        axios.get('http://172.20.10.9:8000/api/maid/' + props.route.params)
         .then((res) =>{
             setMaid(res.data)
         }).catch((error) =>{
@@ -79,10 +80,11 @@ return (
         <Text style={{ color: 'white',fontSize:15 }}>ความสามารถพิเศษ :{maid.skill}</Text>
         </View>
         <View style={{borderBottomColor:'white', borderBottomWidth:1,marginVertical:5}}>
-            <Text>
-                 {State.showDate}ฟหกฟหกฟหกหฟ 
-            </Text>
+            
         </View>
+            <View style={styles.textLine}>
+                <Text style={{ color: 'white',fontSize:15 }}>เลือกวันที่ : {date_me.toString()}</Text>                
+            </View>
 
         <View style={{alignItems:'center',justifyContent:'center'}}>
             <Button title="Show Date Picker" onPress={showDatePicker} buttonStyle={{borderRadius:50,width:200,backgroundColor:'#F5C2C2',marginBottom:5 }} />
@@ -91,8 +93,10 @@ return (
               mode="datetime"
               onConfirm={handleConfirm}
               onCancel={hideDatePicker}
+              
             />
         </View>
+
 
 
         <View style={styles.btn}>
