@@ -4,17 +4,17 @@ import axios from 'axios'
 import {backendUrl} from "../../../config"
 export default function UserProfile(props) {
     const[User, setUser] = useState({
-        name: '',
+        username: '',
         phone: '',
         address: '',
     })
 
     useEffect (() => {
         axios
-      .get( backendUrl +"/api/user")
+      .get( backendUrl +"rest-auth/user-profile/")
       .then((res) =>{
           console.log(res.data)
-          setUser(res.data[0])
+          setUser(res.data)
     }).catch((error) =>{
         console.log('error' , error)
     })
@@ -24,7 +24,7 @@ export default function UserProfile(props) {
             <Image source={{uri: User.photo}}
                    style={styles.userImage} />
              <View style={styles.textLine}>
-            <Text style={{ color: 'white',fontSize:15 }}>Name :{User.name}</Text>
+            <Text style={{ color: 'white',fontSize:15 }}>Name :{User.username}</Text>
             </View>
             <View style={styles.textLine}>
             <Text style={{ color: 'white',fontSize:15 }}>Phone : {User.phone}</Text>

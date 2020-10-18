@@ -12,8 +12,8 @@ export default  class LoginScreen extends ValidationComponent {
     _isMounted = false;
     state = {
         isLoading: false,
-        username: "admin",
-        password: "password",
+        username: "root",
+        password: "root",
     };
 
     constructor(props) {
@@ -63,8 +63,8 @@ export default  class LoginScreen extends ValidationComponent {
     _getUserFromToken = async () => {
         this.setState({isLoading: true});
         let token = await this._getTokenData()
-        await axios
-            .get(backendUrl+"/api/user/", {
+       return await axios
+            .get(backendUrl+"/rest-auth/user-profile/", {
                 headers: {
                     Authorization: `Token ${token}`
                 }
@@ -100,13 +100,15 @@ export default  class LoginScreen extends ValidationComponent {
         console.log("login");
         this._isMounted = true
         let token = await this._getTokenData();
-        console.log("token",token);
+        
         if (token) {
             await this._getUserFromToken()
             let user = await this._getUserData()
             if (user) {
                 this.props.navigation.replace("Template");
             }
+        }else {
+            
         }
 
 
@@ -114,6 +116,9 @@ export default  class LoginScreen extends ValidationComponent {
 
     componentWillUnmount() {
         this._isMounted = false;
+        this.setState = (state,callback)=>{
+            return;
+        };
     }
 
 
@@ -124,21 +129,21 @@ export default  class LoginScreen extends ValidationComponent {
         });
         if (isValid) {
             let token = await this._getToken();
-            if (token){
-                await this._getUserFromToken()
-                let user = await this._getUserData()
-                if(user){
-                    this.props.navigation.replace("Home");
 
+            if (token){
+                let uu = await this._getUserFromToken()
+                let user = await this._getUserData()
+                if(uu &&user){
+                    this.props.navigation.replace("Template");
                 }else{
-                    console.log(token)
+                    console.log(token,'error')
                 }
 
             }
             
         } else {
             console.log(isValid,'isValid error')
-            Alert.alert("Login Failure", this.getErrorMessages(), [
+            Alert.alert("in valid Data", this.getErrorMessages(), [
                 {
                     text: "OK",
                     onPress: () => {
@@ -153,7 +158,7 @@ export default  class LoginScreen extends ValidationComponent {
 
     _getToken = async () => {
         this.setState({isLoading: true});
-        await axios
+        return await axios
             .post(backendUrl + "/rest-auth/login/", {
                 username: this.state.username,
                 password: this.state.password,
@@ -162,14 +167,13 @@ export default  class LoginScreen extends ValidationComponent {
                     Authorization: null
                 }
             })
-            .then((response) => {
-                this.setState({isLoading: false});
-                this._storeTokenData(response.data.key)
-                this._getUserFromToken()
-                console.log("token", token);
+            .then(async(response) => {
+                await this.setState({isLoading: false});
+                await this._storeTokenData(response.data.key)
                 return response.data;
             })
             .catch((error) => {
+                console.log(error)
                 this.setState({isLoading: false});
                 Alert.alert(
                     "Login Failure",
