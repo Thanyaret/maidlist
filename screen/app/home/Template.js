@@ -38,6 +38,7 @@ export default function HomeTemplate(props) {
                     headerTintColor: 'white'
                 }
             } >
+           
             <Stack.Screen
                 name="Home"
                 component={HomeScreen} 
@@ -67,7 +68,7 @@ export default function HomeTemplate(props) {
                 
 
             />
-            <Stack.Screen 
+             <Stack.Screen 
                 name="MaidDetail"
                 component={MaidDetail} />
             
