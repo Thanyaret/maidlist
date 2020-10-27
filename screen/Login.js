@@ -12,8 +12,8 @@ export default  class LoginScreen extends ValidationComponent {
     _isMounted = false;
     state = {
         isLoading: false,
-        username: "root",
-        password: "root",
+        username: "admin",
+        password: "admin",
     };
 
     constructor(props) {
@@ -101,15 +101,15 @@ export default  class LoginScreen extends ValidationComponent {
         this._isMounted = true
         let token = await this._getTokenData();
         
-        if (token) {
-            await this._getUserFromToken()
-            let user = await this._getUserData()
-            if (user) {
-                this.props.navigation.replace("Template");
-            }
-        }else {
+        // if (token) {
+        //     await this._getUserFromToken()
+        //     let user = await this._getUserData()
+        //     if (user) {
+        //         this.props.navigation.replace("Template");
+        //     }
+        // }else {
             
-        }
+        //}
 
 
     }

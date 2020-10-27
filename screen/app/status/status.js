@@ -1,9 +1,9 @@
 import React ,{ useState, useEffect} from 'react'
-import { View, Text ,StyleSheet,FlatList, TouchableOpacity, Image} from 'react-native'
+import {ScrollView, View, Text ,StyleSheet,FlatList, TouchableOpacity, Image,Alert} from 'react-native'
 import axios from 'axios'
 import { Button } from 'react-native-elements';
 import {backendUrl} from "../../../config"
-export default function status() {
+export default function status(props) {
     const [list, setStatus] = useState([]);
     useEffect (() => {
         axios
@@ -15,8 +15,26 @@ export default function status() {
         console.log('error' , error)
     })
 }, [])
+
+const Delete_me = (id) => {
+  axios
+    .delete(`${backendUrl}/api/statusmaid/${id}/`)
+    .then((res) => {
+      
+      Alert.alert("Delete success", "ลบสำเร็จแล้ว", [
+        {
+          text: "ตกลง",
+          
+        },
+      ]);
+    })
+    .catch((error) => {
+      console.log("error ", error);
+    })
+    .finally(() => {});
+};
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
       <FlatList
         style={styles.list}
         data={list}
@@ -29,19 +47,26 @@ export default function status() {
  
             <View style={{flex:1, flexDirection: 'row'}}>
                 
-                <Image source = {{ uri: item.maid_name.photo }} style={styles.imageView} />             
+                <Image source = {{ uri: item.maid_name_data.photo }} style={styles.imageView} />             
              <View style={{alignItems:"lift",flex:'1'}}>
-              <Text style={{fontWeight:"bold", }}>{item.maid_name.name}</Text>
-              <Text style={{fontWeight:"bold",color:"#95A5A6" }}>วันที่จอง:{item.maid_name.date}</Text>
+              <Text style={{fontWeight:"bold", }}>{item.maid_name_data.name}</Text>
+              <Text style={{fontWeight:"bold",color:"#95A5A6" }}>{item.maid_name_data.phone}</Text>
+              <Text style={{fontWeight:"bold",color:"#95A5A6" }}>วันที่จอง:{item.date}</Text>
               <Text style={{fontWeight:"bold",color:"#D8A31D"}}>{item.status ? "ยืนยันแล้ว" : "รอยืนยัน"}</Text>
-              
+              <View style={styles.btn}>
+              <Button titleStyle={{ fontSize: 10, }}
+                buttonStyle={{ borderRadius: 20, width: 80, backgroundColor: '#F5C2C2', justifyContent: 'center', }} title='ยกเลิกการจอง' onPress={() => {
+                  Delete_me(item.id );
+                }}
+                ></Button>
+            </View>
             </View>                    
             </View>
             
           </TouchableOpacity>
         )}
       />
-    </View>
+    </ScrollView>
     
     );
 };
@@ -63,8 +88,8 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
   },
-  item: {
-    height: 100,
+  item: {   
+    height: 150,
     backgroundColor: "white",
     borderRadius: 20,
     padding: 10,
