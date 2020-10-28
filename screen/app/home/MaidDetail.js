@@ -84,7 +84,7 @@ return (
 
         <View style={{alignItems:'center',justifyContent:'center'}}>
             <Button title="Show Date Picker" onPress={showDatePicker} buttonStyle={{borderRadius:50,width:200,backgroundColor:'#F5C2C2',marginBottom:5 }} />
-            <DateTimePickerModal
+            <DateTimePicker
               isVisible={isDatePickerVisible}
               mode="datetime"
               onConfirm={handleConfirm}

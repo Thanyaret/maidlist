@@ -46,4 +46,3 @@ const styles = StyleSheet.create({
     },
     textLine: {marginBottom:20,padding:10},
 });
-
