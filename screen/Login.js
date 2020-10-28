@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {backendUrl} from "../config"
 
 
+
 export default  class LoginScreen extends ValidationComponent {
     _isMounted = false;
     state = {
@@ -47,6 +48,7 @@ export default  class LoginScreen extends ValidationComponent {
 
         }
     }
+    
 
     _getTokenData = async () => {
         try {
@@ -101,15 +103,15 @@ export default  class LoginScreen extends ValidationComponent {
         this._isMounted = true
         let token = await this._getTokenData();
         
-        if (token) {
-            await this._getUserFromToken()
-            let user = await this._getUserData()
-            if (user) {
-                this.props.navigation.replace("Template");
-            }
-        }else {
+        // if (token) {
+        //     await this._getUserFromToken()
+        //     let user = await this._getUserData()
+        //     if (user) {
+        //         this.props.navigation.replace("Template");
+        //     }
+        // }else {
             
-        }
+        //}
 
 
     }
@@ -234,7 +236,7 @@ export default  class LoginScreen extends ValidationComponent {
               <Button  titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',marginBottom:5 }}  onPress={this._onPressButton} color='#F5C2C2' title='Login'></Button>        
               </View>
               <View >
-              <Button titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',}}  onPress={()=>{this.props.navigation.replace("Register")}} title='Register'></Button>
+              <Button titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',}}  onPress={()=>{this.props.navigation("RegisterScreen")}} title='Register'></Button>
               </View>
           </View>
     

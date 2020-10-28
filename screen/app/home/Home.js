@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text,StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
+import { ScrollView,View, Text,StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
 import axios from 'axios'
 import {backendUrl} from "../../../config"
 
@@ -42,7 +42,7 @@ export default function HomeScreen(props) {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       
      
       <FlatList
@@ -61,10 +61,6 @@ export default function HomeScreen(props) {
             <View style={{flex:1, flexDirection: 'row'}}>
                 
                 <Image source = {{ uri: item.photo }} style={styles.imageView} />
-              
-                {/* <Text  style={{width:'50%', textAlignVertical:'right',padding:10,color: 'red',flex:1}} >{item.name}</Text>
-                <Text  style={{textAlignVertical:'center',padding:20,flex:1}} >{item.detail}</Text>
-             */}
              <View style={{alignItems:"lift",flex:'1'}}>
               <Text style={{fontWeight:"bold",}}>{item.name}</Text>
               <Text style={{color:"#95A5A6"}}>{item.phone}</Text>
@@ -74,21 +70,12 @@ export default function HomeScreen(props) {
                       
             </View>
             
-
-{/* 
-            <Image source={{uri: item.photo}}
-                   style={{width:60, height:60,borderRadius:30,flexDirection:'row',horizontal:'5',borderRadius:'5'}} /> */}
-            {/* <View style={{alignItems:"center",flex:'1'}}>
-              <Text style={{fontWeight:"bold"}}>{item.name}</Text>
-              <Text>{item.detail}</Text>
-            </View>
-             */}
             
           </TouchableOpacity>
         )}
       />
      
-    </View>
+    </ScrollView>
     
     );
 };
@@ -118,8 +105,8 @@ const styles = StyleSheet.create({
     marginVertical: 10
   },
   maidImage: {
-    height: '85%',
-    width:'30%'
+    height: '70%',
+    width:'25%'
 },
   textdata:{
 
@@ -143,11 +130,7 @@ textView: {
 
 }
 });
-    // return (
-    //   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    //     <Text>Home</Text>
-    //   </View>
-    // );
+
   
   
   
