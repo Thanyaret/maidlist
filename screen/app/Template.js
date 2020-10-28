@@ -10,7 +10,7 @@ const Tab = createBottomTabNavigator();
 export default function AppTemplateScreen({navigation}) {
 
     const customTabBarStyle = {
-        activeTintColor: '#660095',
+        activeTintColor: '#61AC7F',
         inactiveTintColor: 'gray',
         style: {backgroundColor: 'white'},
     }

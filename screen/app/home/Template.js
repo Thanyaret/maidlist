@@ -66,11 +66,23 @@ export default function HomeTemplate(props) {
                     }
                 }}
                 
+<<<<<<< Updated upstream
 
             />
              <Stack.Screen 
                 name="MaidDetail"
                 component={MaidDetail} />
+=======
+            
+            
+           
+            <Stack.Screen 
+                name="MaidDetail"
+                component={MaidDetail} />
+                 <Stack.Screen
+                name="Home"
+                component={HomeScreen} />
+>>>>>>> Stashed changes
             
         </Stack.Navigator>
     )
