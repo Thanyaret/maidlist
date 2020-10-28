@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text,StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
+import { ScrollView,View, Text,StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
 import axios from 'axios'
 import {backendUrl} from "../../../config"
 
@@ -42,7 +42,7 @@ export default function HomeScreen(props) {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       
      
       <FlatList
@@ -75,7 +75,7 @@ export default function HomeScreen(props) {
         )}
       />
      
-    </View>
+    </ScrollView>
     
     );
 };

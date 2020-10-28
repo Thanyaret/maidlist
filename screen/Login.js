@@ -8,12 +8,13 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {backendUrl} from "../config"
 
 
+
 export default  class LoginScreen extends ValidationComponent {
     _isMounted = false;
     state = {
         isLoading: false,
-        username: "admin",
-        password: "admin",
+        username: "root",
+        password: "root",
     };
 
     constructor(props) {
@@ -47,6 +48,7 @@ export default  class LoginScreen extends ValidationComponent {
 
         }
     }
+    
 
     _getTokenData = async () => {
         try {
@@ -234,7 +236,7 @@ export default  class LoginScreen extends ValidationComponent {
               <Button  titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',marginBottom:5 }}  onPress={this._onPressButton} color='#F5C2C2' title='Login'></Button>        
               </View>
               <View >
-              <Button titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',}}  onPress={()=>{this.props.navigation.replace("Register")}} title='Register'></Button>
+              <Button titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',}}  onPress={()=>{this.props.navigation("RegisterScreen")}} title='Register'></Button>
               </View>
           </View>
     

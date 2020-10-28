@@ -1,32 +1,44 @@
 import React ,{ useState, useEffect} from 'react'
-import {ScrollView, View, Text ,StyleSheet,FlatList, TouchableOpacity, Image,Alert} from 'react-native'
+import {ScrollView, View, Text ,StyleSheet,FlatList, TouchableOpacity, Image,Alert,RefreshControl} from 'react-native'
 import axios from 'axios'
 import { Button } from 'react-native-elements';
 import {backendUrl} from "../../../config"
 export default function status(props) {
     const [list, setStatus] = useState([]);
+    const [refreshing,setRereshing] = useState(false)
+
     useEffect (() => {
-        axios
-      .get( backendUrl+"/api/statusmaid/")
-      .then((res) =>{
-          console.log(res.data)
-          setStatus(res.data)
-    }).catch((error) =>{
-        console.log('error' , error)
-    })
+      _loadData()
+       
 }, [])
+const _loadData = async() => {
+  axios
+  .get( backendUrl+"/api/statusmaid/")
+  .then((res) =>{
+      console.log(res.data)
+      setStatus(res.data)
+}).catch((error) =>{
+    console.log('error' , error)
+})
+}
+const onRefresh = async () => {
+  setRereshing( true );
+  await _loadData();
+  setRereshing( false);
+};
 
 const Delete_me = (id) => {
   axios
     .delete(`${backendUrl}/api/statusmaid/${id}/`)
     .then((res) => {
       
-      Alert.alert("Delete success", "ลบสำเร็จแล้ว", [
+      Alert.alert( "ลบสำเร็จแล้ว", [
         {
           text: "ตกลง",
           
         },
       ]);
+      _loadData()
     })
     .catch((error) => {
       console.log("error ", error);
@@ -36,9 +48,12 @@ const Delete_me = (id) => {
     return (
         <ScrollView style={styles.container}>
       <FlatList
+       refreshControl={
+        <RefreshControl refreshing={false} onRefresh={onRefresh} />
+      }
         style={styles.list}
         data={list}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id+""}
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.item}
@@ -55,7 +70,8 @@ const Delete_me = (id) => {
               <Text style={{fontWeight:"bold",color:"#D8A31D"}}>{item.status ? "ยืนยันแล้ว" : "รอยืนยัน"}</Text>
               <View style={styles.btn}>
               <Button titleStyle={{ fontSize: 10, }}
-                buttonStyle={{ borderRadius: 20, width: 80, backgroundColor: '#F5C2C2', justifyContent: 'center', }} title='ยกเลิกการจอง' onPress={() => {
+                buttonStyle={{ borderRadius: 20, width: 80, backgroundColor: '#F5C2C2', justifyContent: 'center', }} title='ยกเลิกการจอง'
+                 onPress={() => {
                   Delete_me(item.id );
                 }}
                 ></Button>

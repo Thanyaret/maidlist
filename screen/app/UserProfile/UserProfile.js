@@ -58,7 +58,7 @@ export default class UserProfile extends React.Component {
                 <Image source={{ uri:  this.state.image}}
                     style={styles.userImage} />
                 <View style={styles.textLine}>
-                    <Text style={{ color: 'white', fontSize: 15 }}>ชื่อ : {this.state.user.first_name}</Text>
+                    <Text style={{ color: 'white', fontSize: 15 }}>ชื่อ : {this.state.user.first_name} {this.state.user.last_name}</Text>
                 </View>
                 <View style={styles.textLine}>
                     <Text style={{ color: 'white', fontSize: 15 }}>เบอร์โทรศัพท์ : {this.state.user.userprofile ? this.state.user.userprofile.phone : ""}</Text>
