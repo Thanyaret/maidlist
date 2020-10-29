@@ -4,7 +4,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import * as SplashScreen from 'expo-splash-screen';
 import AppTemplateScreen from './screen/app/Template'
 import LoginScreen from './screen/Login'
-
+import RegisterScreen from './screen/Register'
+     
 import {AppLoading} from "expo";
 
 
@@ -49,7 +50,7 @@ class App extends React.Component {
                     mode="modal"
                     screenOptions={{
                         headerStyle: {
-                            backgroundColor: "#660095",
+                            backgroundColor: "#61AC7F",
                             borderBottomWidth: 0,
                             shadowOpacity: 0,
                         },
@@ -61,12 +62,12 @@ class App extends React.Component {
                         options={{headerShown: false}}
                         component={LoginScreen}/>
 
-                    {/* <RootStack.Screen
+                    <RootStack.Screen
                         name="Register"
                         options={{
-                            title: 'Little Voice',
+                            title: 'Register',
                         }}
-                        component={RegisterScreen}/> */}
+                        component={RegisterScreen}/>
 
                     <RootStack.Screen
                         name="Template"

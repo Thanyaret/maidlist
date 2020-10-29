@@ -236,7 +236,7 @@ export default  class LoginScreen extends ValidationComponent {
               <Button  titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',marginBottom:5 }}  onPress={this._onPressButton} color='#F5C2C2' title='Login'></Button>        
               </View>
               <View >
-              <Button titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',}}  onPress={()=>{this.props.navigation("RegisterScreen")}} title='Register'></Button>
+              <Button titleStyle={{fontSize: 22,}} buttonStyle={{borderRadius:50,width:100,backgroundColor:'#F5C2C2',}}  onPress={()=>{this.props.navigation.navigate("Register")}} title='Register'></Button>
               </View>
           </View>
     
@@ -283,43 +283,5 @@ const styles = StyleSheet.create({
 });
 
 
-//   const style = StyleSheet.create({
-//       view_bg:{
-//           backgroundColor : "#61AC7F",
-//           flex:1 ,
-//           alignItems:'center',
-//           justifyContent:'center',
-//           width:'100%'
-//       },
-//       logo:{
-//           width :250,
-//           height:250,
-//           marginBottom:50
-//       },
-//       input_view:{
-//           width:'70%',
-//           marginBottom:20
 
-//       },
-//       text_input:{     
-//          height: 40, 
-//          backgroundColor : 'white',
-//          borderRadius : 30,
-//          width:'100%',
-//          paddingHorizontal: 10,
-//          marginVertical:5,
-//       },
-//       container: {
-//         flex: 1,
-//         flexDirection: 'row',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//     },
-//     buttonContainer: {
-//         flex: 1,
-//     }
-
-      
-      
-//   });
   
