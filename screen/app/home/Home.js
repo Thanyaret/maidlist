@@ -25,11 +25,7 @@ export default function HomeScreen(props) {
   useEffect(() => {
     setHeader();
     axios
-<<<<<<< Updated upstream
       .get(  backendUrl+"/api/maid/")
-=======
-      .get("http://172.20.10.9:8000/api/maid/")
->>>>>>> Stashed changes
       .then((res) => {
         setList(res.data);
       })
